@@ -74,6 +74,8 @@ button.copy.sec{background:var(--ink);color:var(--bg)}
 .guide h4{margin:16px 0 0;font-size:1rem}
 .guide h4+.steps{margin-top:8px}
 .src{display:block;margin-top:12px;text-align:center;text-decoration:none;font-weight:600;background:var(--acc);color:var(--accink);padding:12px 14px;border-radius:8px;word-break:break-word}
+.txt{white-space:pre-line;line-height:1.55;word-break:break-word;margin-top:6px}
+.txt a{color:var(--acc);font-weight:600;word-break:break-all}
 .src.alt{background:var(--chip);color:var(--ink)}
 .src.nolink{background:var(--chip);color:var(--ink);text-align:left;font-weight:600}
 .tw{overflow-x:auto;margin-top:8px}
@@ -251,6 +253,14 @@ const SUB=$("#sub").textContent;
    src — {t:"название сайта", u:"https://..." (необязательно: без u источник показывается без кнопки)} (источник, всегда показывается первым в карточке);
    warn — важное предупреждение; note — примечание */
 const GUIDES=[
+{cat:"Электрика",car:"CX-3",name:"Инструкция оригинальной сигнализации Mazda",kw:"сигнализация,оригинальная сигнализация,дистанционный запуск,дистанционный запуск двигателя,автозапуск,пульт,брелок,remote start,запуск двигателя,cx-3,сх3,oem,C930 V7 620",
+ docs:[{t:"Открыть инструкцию (PDF)",u:"remote-start-cx3.pdf"}]},
+{cat:"Электрика",car:"Mazda с i-Stop",name:"Замена АКБ с i-Stop",kw:"акб,аккумулятор,замена акб,замена аккумулятора,i-stop,istop,айстоп,инициализация,клемма,датчик тока,окна,стеклоподъемники,напряжение",
+ docs:[{t:"Исходный файл (PDF)",u:"battery-istop.pdf",alt:1}],
+ text:"**Инициализация i-Stop**\n1. Убедится что напряжение в новом аккуме находится в диапазоне 12,5-12,7 вольт;\n2. Скинуть минусовую клемму;\n3. Отсоединить датчик тока от минусовой клеммы;\n4. Скинуть плюсовую клемму;\n5. Снимаем аккумулятор;\n6. Выждать 5 минут без аккумулятора;\n7. Ставим новый аккумулятор;\n8. Накидываем плюсовую клемму;\n9. Одеть минусовую клемму на аккумулятор **(без датчика тока)** и выждать 15 секунд;\n10. Подсоединить датчик тока;\n11. Включаем зажигание и ждем 1 мин;\n12. Нажимаем кнопку i-Stop OFF и держим ее 10 секунд - индикатор айстоп должен замигать зеленым;\n13. **Если индикатор не мигает зеленым то начинаем всю процедуру с пункта №9. Если напряжение в АКБ низкое то можно просто завести машину и подождать пока АКБ подзарядиться. Если напряжение в АКБ более 12,7 вольт то включить фары на 15-30 сек.;**\n14. Если индикатор замигал зеленым цветом то можно закрывать капот **(до этого момента капот должен оставаться открытым)**;\n15. Заводим автомобиль;\n16. Дождаться пока погаснет синий индикатор прогрева двигателя (если двигатель не прогрет);\n17. Поворачиваем руль от упора до упора: вправо, затем влево, и выставляем на центр;\n18. Глушим автомобиль;\n19. Включаем зажигание - нажимаем кнопку i-Stop на 3 сек - заводим машину - кратковременно нажимаем кнопку i-Stop - **должен замигать индикатор i-Stop зеленым цветом**;\n20. Ждем до момента когда индикатор i-Stop погаснет;\n21. Опустить все окна (по одному) вниз - задержать на 3 сек - поднять вверх - задержать на 3 сек - **для инициализации автоматического подъема окон. Если на АВТО только водительское окно, то соответственно делаем эту процедуру только с ним.**"},
+{cat:"Мультимедиа",car:"MZD Connect: Axela, CX-3, Demio",name:"Русификация ГУ",kw:"русификация,русификация гу,гу,мультимедиа,магнитола,прошивка,язык,русский язык,флешка,fat32,версия 70,версия 74,кирпич,аксела,сх3,демио",
+ docs:[{t:"Официальный бюллетень Mazda (PDF, на русском)",u:"mzd-connect-update.pdf",alt:1}],
+ text:"Русификация мультимедиа ‼️\n\n🔴1. Берете флешку от 4 гб до 32\n🔴2.Форматируете ее на компе в формате Fat32\n🔴3. Скачиваете этот файл по этой ссылки 👉🏻\nЭто версия прошивки 70\nhttps://drive.google.com/drive/folders/1_g-miquLiBBcLT_2cCq9GAqCYRQnunJQ?usp=share_link\n\nЛибо по этой 74 версия https://drive.google.com/file/d/1_RoirvyDoFUkg7MQegq20Ls7AIjl3f5o/edit\n\n❗Важно, смотрим версию своей прошивки, если она выше чем 70.367 вам нужна прошивка выше номером. Если ниже то лучше сначала поставьте 70 а потом уже 74\n\n🔴4. Закачиваете на флешку уже форматированию с формате Fat 32\n🔴5. Идете в авто вставляете флешку в порт usb\n🔴6. Включаете первое положение зажигания (но говорят можно и на заведеную) но я так не делал.\n🔴7. Зажимаете 3 кнопки одновременно как на картинке ☝️\nкнопки на картинке могут отличаться, но суть их одна и все они обозначены одинаково\n🔴8. После зажатия вылезет окно где нужно везти 3 enter clear 2 enter clear 99 enter\nВыбрать 70.367 ну название файла, скачаете выше прошивку, значит выше цифры будут\nИ как начнется загрузка, нажимаете каждые 5-10 минут тормоз, либо открываете-закрываете водительскую дверь, чтобы машина не ушла в сон, вся эта загрузка идет минут 40-45 после завершения выключите зажигание вытащите флешку и в настройках меняйте язык.\n\n❗️Дополнительно: если у вас не работает экран, не реагирует сенсор на прикосновения, момент в сервисном меню проходите шайбой. Шайбой выбираете цифры нажимаете на шайбу, потом следующие снова на шайбу и т.д.\n\n🚨Важно если у вас версия 59.00.545 то надо ставить сначала 70 версию двухфайловую иначе можно схватить кирпич. С остальными проблем нет можно сразу 74"},
 {cat:"Двигатель",car:"SKYACTIV-D 1.5 (CX-3, Demio, Axela)",name:"Переборка двигателя SKYACTIV-D 1.5: мануал",kw:"двигатель,переборка,разборка,сборка,капремонт,гбц,блок цилиндров,поршни,шатуны,коленвал,распредвал,клапаны,маховик,моменты затяжки,момент затяжки,skyactiv-d,1.5,s5-dpts,мануал,руководство,pdf,перевод",
  warn:"⚠️ Русская версия — ПЕРЕВОД, СДЕЛАННЫЙ ИИ, для тех, кому тяжело читать по-английски. ИИ может ошибаться. МОМЕНТЫ ЗАТЯЖКИ, ЗАЗОРЫ И ВСЕ ДРУГИЕ ЦИФРЫ ОБЯЗАТЕЛЬНО ПРОВЕРЯЙТЕ В ОРИГИНАЛЕ!!!",
  docs:[{t:"Перевод на русский (PDF, сделан ИИ)",u:"engine-1.5-ru.pdf"},{t:"Оригинал на английском (PDF, Mazda)",u:"engine-1.5-original.pdf",alt:1}],
@@ -480,16 +490,18 @@ function applyMode(){
 }
 function stepsHtml(a,ul){const T=ul?"ul":"ol";return `<${T} class="steps">${(a||[]).map(s=>{const t=typeof s==="string"?s:s.t;return `<li>${esc(t)}${s.img?`<img src="${esc(s.img)}" alt="" loading="lazy">`:""}</li>`}).join("")}</${T}>`}
 function tableHtml(t){return `<div class="tw"><table class="ft"><thead><tr>${t.head.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${t.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}${r[4]?`<div class="lbl">${esc(r[4])}</div>`:""}</td></tr>`).join("")}</tbody></table></div>`}
+function linkify(t){return esc(t).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/(https?:\/\/[^\s<]+)/g,u=>`<a href="${u}" target="_blank" rel="noopener">${u}</a>`)}
 function renderGuides(){
   const q=norm($("#q").value);
   const all=g=>g.sections?g.sections.flatMap(x=>[x.h,...(x.table?x.table.rows.flat():x.steps)]):(g.steps||[]);
-  const txt=g=>norm([g.name,g.cat,g.car||"",g.kw||"",all(g).map(x=>x.t||x).join(" ")].join(" "));
+  const txt=g=>norm([g.name,g.cat,g.car||"",g.kw||"",g.text||"",all(g).map(x=>x.t||x).join(" ")].join(" "));
   const r=GUIDES.filter(g=>(!cat||g.cat===cat)&&(!q||q.split(/\s+/).every(w=>txt(g).includes(w))));
   $("#count").textContent=r.length?`Найдено: ${r.length}`:"";
   $("#list").innerHTML=r.length?r.map(g=>`<details class="card guide"><summary><div><h3>${esc(g.name)}</h3>${g.car?`<span class="tag">${esc(g.car)}</span>`:""}</div></summary>
 <div class="body">${g.src?(g.src.u?`<a class="src" href="${esc(g.src.u)}" target="_blank" rel="noopener">Источник: ${esc(g.src.t)} ↗</a>`:`<div class="src nolink">Источник: ${esc(g.src.t)}</div>`):""}
 ${g.warn?`<div class="warn">${esc(g.warn)}</div>`:""}
 ${g.docs?g.docs.map(d=>`<a class="src${d.alt?" alt":""}" href="${esc(d.u)}" target="_blank" rel="noopener">${esc(d.t)} ↗</a>`).join(""):""}
+${g.text?`<div class="txt">${linkify(g.text)}</div>`:""}
 ${g.sections?g.sections.map(x=>`<h4>${esc(x.h)}</h4>${x.table?tableHtml(x.table):stepsHtml(x.steps,x.bullets)}`).join(""):stepsHtml(g.steps)}
 ${g.note?`<div class="note">${esc(g.note)}</div>`:""}</div></details>`).join(""):
   `<div class="empty">${GUIDES.length?"Ничего не найдено. Попробуйте другое слово.":"Инструкций пока нет. Скоро здесь появятся пошаговые инструкции."}</div>`;
