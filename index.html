@@ -74,6 +74,7 @@ button.copy.sec{background:var(--ink);color:var(--bg)}
 .guide h4{margin:16px 0 0;font-size:1rem}
 .guide h4+.steps{margin-top:8px}
 .src{display:block;margin-top:12px;text-align:center;text-decoration:none;font-weight:600;background:var(--acc);color:var(--accink);padding:12px 14px;border-radius:8px;word-break:break-word}
+.src.alt{background:var(--chip);color:var(--ink)}
 .src.nolink{background:var(--chip);color:var(--ink);text-align:left;font-weight:600}
 .tw{overflow-x:auto;margin-top:8px}
 .ft{border-collapse:collapse;width:100%;font-size:.86rem}
@@ -250,6 +251,24 @@ const SUB=$("#sub").textContent;
    src — {t:"название сайта", u:"https://..." (необязательно: без u источник показывается без кнопки)} (источник, всегда показывается первым в карточке);
    warn — важное предупреждение; note — примечание */
 const GUIDES=[
+{cat:"Двигатель",car:"SKYACTIV-D 1.5 (CX-3, Demio, Axela)",name:"Переборка двигателя SKYACTIV-D 1.5: мануал",kw:"двигатель,переборка,разборка,сборка,капремонт,гбц,блок цилиндров,поршни,шатуны,коленвал,распредвал,клапаны,маховик,моменты затяжки,момент затяжки,skyactiv-d,1.5,s5-dpts,мануал,руководство,pdf,перевод",
+ warn:"⚠️ Русская версия — ПЕРЕВОД, СДЕЛАННЫЙ ИИ, для тех, кому тяжело читать по-английски. ИИ может ошибаться. МОМЕНТЫ ЗАТЯЖКИ, ЗАЗОРЫ И ВСЕ ДРУГИЕ ЦИФРЫ ОБЯЗАТЕЛЬНО ПРОВЕРЯЙТЕ В ОРИГИНАЛЕ!!!",
+ docs:[{t:"Перевод на русский (PDF, сделан ИИ)",u:"engine-1.5-ru.pdf"},{t:"Оригинал на английском (PDF, Mazda)",u:"engine-1.5-original.pdf",alt:1}],
+ sections:[
+  {h:"Как пользоваться",bullets:true,steps:[
+   "Читайте по-русски, чтобы понять порядок работы. Перед затяжкой любого болта откройте оригинал и сверьте число.",
+   "Схемы в обоих файлах одинаковые, на них видны номера деталей, места смазки и герметика.",
+   "Если цифра в переводе и в оригинале не совпала, верна цифра из оригинала."]},
+  {h:"Что внутри",bullets:true,steps:[
+   "Предупреждения при капитальном ремонте и установка двигателя на стенд.",
+   "Разборка и сборка двигателя, снятие и установка деталей по порядку.",
+   "Проверка головки блока цилиндров, седел и направляющих втулок клапанов, самих клапанов и пружин.",
+   "Проверка коромысел и распределительного вала.",
+   "Проверка блока цилиндров и клапана масляной форсунки.",
+   "Проверка поршня, поршневых колец, поршневого пальца и шатуна, зазоров шатуна.",
+   "Проверка коленчатого вала, двухмассового маховика и болтов.",
+   "Моторное масло, единицы измерения и сокращения."]}],
+ note:"Это полные документы, а не краткий пересказ, поэтому PDF большие. Мануал Mazda защищён авторским правом, перевод сделан для личного пользования владельцами."},
 {cat:"Кузов",car:"CX-3 (2015–2023)",name:"Снятие бампера Mazda CX-3",kw:"бампер,передний,задний,снять,демонтаж,клипсы,подкрылки,расширители,фары,фонари",
  sections:[
  {h:"Передний бампер",steps:[
@@ -470,6 +489,7 @@ function renderGuides(){
   $("#list").innerHTML=r.length?r.map(g=>`<details class="card guide"><summary><div><h3>${esc(g.name)}</h3>${g.car?`<span class="tag">${esc(g.car)}</span>`:""}</div></summary>
 <div class="body">${g.src?(g.src.u?`<a class="src" href="${esc(g.src.u)}" target="_blank" rel="noopener">Источник: ${esc(g.src.t)} ↗</a>`:`<div class="src nolink">Источник: ${esc(g.src.t)}</div>`):""}
 ${g.warn?`<div class="warn">${esc(g.warn)}</div>`:""}
+${g.docs?g.docs.map(d=>`<a class="src${d.alt?" alt":""}" href="${esc(d.u)}" target="_blank" rel="noopener">${esc(d.t)} ↗</a>`).join(""):""}
 ${g.sections?g.sections.map(x=>`<h4>${esc(x.h)}</h4>${x.table?tableHtml(x.table):stepsHtml(x.steps,x.bullets)}`).join(""):stepsHtml(g.steps)}
 ${g.note?`<div class="note">${esc(g.note)}</div>`:""}</div></details>`).join(""):
   `<div class="empty">${GUIDES.length?"Ничего не найдено. Попробуйте другое слово.":"Инструкций пока нет. Скоро здесь появятся пошаговые инструкции."}</div>`;
