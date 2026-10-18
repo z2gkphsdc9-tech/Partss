@@ -74,6 +74,7 @@ button.copy.sec{background:var(--ink);color:var(--bg)}
 .guide h4{margin:16px 0 0;font-size:1rem}
 .guide h4+.steps{margin-top:8px}
 .src{display:block;margin-top:12px;text-align:center;text-decoration:none;font-weight:600;background:var(--acc);color:var(--accink);padding:12px 14px;border-radius:8px;word-break:break-word}
+.gimg{display:block;width:100%;max-width:420px;height:auto;border-radius:10px;margin:8px auto}
 .txt{white-space:pre-line;line-height:1.55;word-break:break-word;margin-top:6px}
 .txt a{color:var(--acc);font-weight:600;word-break:break-all}
 .src.alt{background:var(--chip);color:var(--ink)}
@@ -253,6 +254,9 @@ const SUB=$("#sub").textContent;
    src — {t:"название сайта", u:"https://..." (необязательно: без u источник показывается без кнопки)} (источник, всегда показывается первым в карточке);
    warn — важное предупреждение; note — примечание */
 const GUIDES=[
+{cat:"Электрика",name:"Датчик температуры в салоне",kw:"датчик температуры,датчик температуры салона,температура в салоне,решетка,решётка,климат,климат-контроль,протереть,спирт,ватка,панель",
+ img:"cabin-temp-sensor.jpg",
+ text:"Вот за этим находится датчик температуры. Не подлезть. Протёр ваткой со спиртом на палочке"},
 {cat:"Диагностика",name:"Скрытые функции через FORScan",kw:"forscan,форскан,скрытые функции,активация,скрытых функций,as-built,калькулятор,excel,xlsx,файл,mazda skyactiv,obd-ii,настройки,кодирование",
  docs:[{t:"Скачать файл (Excel, v7.12)",u:"forscan-mazda-calc.xlsx"}],
  text:"Файл для активации скрытых функций через  форскан, использовать на свой страх и риск понимая что делаешь. 👆"},
@@ -513,6 +517,7 @@ function renderGuides(){
 <div class="body">${g.src?(g.src.u?`<a class="src" href="${esc(g.src.u)}" target="_blank" rel="noopener">Источник: ${esc(g.src.t)} ↗</a>`:`<div class="src nolink">Источник: ${esc(g.src.t)}</div>`):""}
 ${g.warn?`<div class="warn">${esc(g.warn)}</div>`:""}
 ${g.docs?g.docs.map(d=>`<a class="src${d.alt?" alt":""}" href="${esc(d.u)}" target="_blank" rel="noopener">${esc(d.t)} ↗</a>`).join(""):""}
+${g.img?`<a href="${esc(g.img)}" target="_blank" rel="noopener"><img class="gimg" src="${esc(g.img)}" alt="${esc(g.name)}" loading="lazy"></a>`:""}
 ${g.text?`<div class="txt">${linkify(g.text)}</div>`:""}
 ${g.sections?g.sections.map(x=>`<h4>${esc(x.h)}</h4>${x.table?tableHtml(x.table):stepsHtml(x.steps,x.bullets)}`).join(""):stepsHtml(g.steps)}
 ${g.note?`<div class="note">${esc(g.note)}</div>`:""}</div></details>`).join(""):
