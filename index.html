@@ -256,6 +256,9 @@ const SUB=$("#sub").textContent;
    src — {t:"название сайта", u:"https://..." (необязательно: без u источник показывается без кнопки)} (источник, всегда показывается первым в карточке);
    warn — важное предупреждение; note — примечание */
 const GUIDES=[
+{cat:"Двигатель",name:"Сброс горящего ключа",kw:"ключ,горящий ключ,ключ горит,ключ мигает,мигающий ключ,сброс ключа,сброс,межсервисный интервал,замена масла,слив конденсата,слив воды,топливный конденсат,форскан,forscan,пипка,приборка,колодка предохранителей,предохранители",
+ docs:[{t:"Исходный файл (Word)",u:"reset-key.docx",alt:1}],
+ parts:[{"t": "🔧Ключ горит- сброс межсервисного интервала замены масла(убирается зажатием \"пипки\" приборки и вкл зажигания:"}, {"img": "reset-key-burning.jpg"}, {"t": "🔧Ключ мигает - сброс межсервисного интервала слива топливного конденсата(раз в 20т.км.) убирается при помощи программы forscan и совместимого obd адаптера.\n\nhttps://forscan.org/ ссылка для скачивания и покупки программы, там же рекомендуемые адаптеры.\n\nБез проги и адаптера можно скинуть проводом, замкнув на массу соответствующую клемму в колодке предохранителей под капотом.\n\nВидео, как это сделать - https://youtu.be/zeeUOw3docQ"}]},
 {cat:"Салон",name:"Снятие подушки airbag (видео инструкция)",kw:"подушка безопасности,подушка,airbag,эйрбег,srs,снятие подушки,видео,видео инструкция,руль,рулевое колесо,демонтаж",
  docs:[{t:"Открыть видео в Telegram",u:"https://t.me/mazda_disel/48/208514"}]},
 {cat:"Двигатель",name:"Сброс мигающего ключа без программы форскан",kw:"мигающий ключ,ключ,гаечный ключ,сброс,сброс ключа,топливный фильтр,слив воды,вода из топливного фильтра,интервал,20000,20000 км,форскан,forscan,без форскана,индикатор,видео,дизель",
@@ -554,6 +557,7 @@ ${g.docs?g.docs.map(d=>`<a class="src${d.alt?" alt":""}" href="${esc(d.u)}" targ
 ${g.video?`<video class="gvid" controls playsinline preload="metadata"${g.poster?` poster="${esc(g.poster)}"`:""} src="${esc(g.video)}"></video>`:""}
 ${(g.imgs||(g.img?[g.img]:[])).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener"><img class="gimg" src="${esc(u)}" alt="${esc(g.name)}" loading="lazy"></a>`).join("")}
 ${g.text?`<div class="txt">${linkify(g.text)}</div>`:""}
+${g.parts?g.parts.map(x=>x.img?`<a href="${esc(x.img)}" target="_blank" rel="noopener"><img class="gimg" src="${esc(x.img)}" alt="${esc(g.name)}" loading="lazy"></a>`:`<div class="txt">${linkify(x.t)}</div>`).join(""):""}
 ${g.sections?g.sections.map(x=>`<h4>${esc(x.h)}</h4>${x.table?tableHtml(x.table):stepsHtml(x.steps,x.bullets)}`).join(""):stepsHtml(g.steps)}
 ${g.note?`<div class="note">${esc(g.note)}</div>`:""}</div></details>`).join(""):
   `<div class="empty">${GUIDES.length?"Ничего не найдено. Попробуйте другое слово.":"Инструкций пока нет. Скоро здесь появятся пошаговые инструкции."}</div>`;
