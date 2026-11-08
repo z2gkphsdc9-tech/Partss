@@ -89,6 +89,7 @@ button.copy.sec{background:var(--ink);color:var(--bg)}
 .ft .lbl{margin-top:2px}
 .warn{margin-top:10px;padding:8px 10px;border-left:4px solid var(--acc);background:var(--bg);border-radius:4px;font-size:.9rem}
 .warn.hot{background:rgba(168,35,43,.16);border-left-width:6px;font-size:1.02rem}
+.warn.big{font-size:1.3rem;line-height:1.35;font-weight:800;text-transform:uppercase;text-align:center;border-left-width:8px;padding:14px 12px;background:rgba(168,35,43,.22)}
 .warn a{color:var(--acc);font-weight:700;word-break:break-all}
 </style>
 </head>
@@ -299,6 +300,7 @@ const GUIDES=[
 {cat:"Двигатель",name:"Снятие сажевого на Мазда аксела передний привод",kw:"сажевый,сажевый фильтр,dpf,снятие сажевого,снять сажевый,демонтаж,катализатор,радиатор егр,егр,подрамник,гофра,антифриз,аксела,axela,передний привод,хомуты,датчики давления,дизель",
  text:"1. сливается антифриз\n2. откручиваются пластиковые и металические защиты двигателя, также защитные экраны на катализаторе.\n3. отсоединяются хомуты и фишки, также оьратите внимание на хомуты возле генератора, там идут трубки на датчики давление сажевого.\n4. открчиваются все болты сажевого фильтра соединяюшиеся с катализатором, и болты крепления снизу катализатора.\n5. после того как сажевый вместе с радиатором охлажления егр падает, откручиваем 4 болта между сажевым и радиатором, они извлекаются отдельно, сначало радиатор потом сажевый, можно на акселе переднеприводной преотпустить подрамник или перевернуть сажевый чтоб он вылез, но с переворотом не уверен что гофру если сильно выгнуть можно испортить\n6. делаете с сажевым что задумали, и соьираете всё в обратной последовательности"},
 {cat:"Диагностика",name:"Mazda Diesel: диагностическое приложение для Android",kw:"приложение,андроид,android,apk,диагностика,мониторинг,прожиг,сажевый фильтр,датчики,ошибки,коды ошибок,справочник,andreynvkz,mazda diesel,skyactiv-d",
+ warn:"⚠️ **Это BETA версия приложения находится в разработке не ориентируйтесь на него полностью!!!**",warnHot:1,warnBig:1,
  docs:[{t:"Скачать приложение (APK, версия 0.7.4)",u:"Mazda_Diesel_0_7_4.apk"}],
  img:"mazda-diesel-app.jpg",
  text:"Диагностические приложение для Андроид от @AndreyNVKZ"},
@@ -568,7 +570,7 @@ function renderGuides(){
   $("#count").textContent=r.length?`Найдено: ${r.length}`:"";
   $("#list").innerHTML=r.length?r.map(g=>`<details class="card guide"><summary><div><h3>${esc(g.name)}</h3>${g.car?`<span class="tag">${esc(g.car)}</span>`:""}</div></summary>
 <div class="body">${g.src?(g.src.u?`<a class="src" href="${esc(g.src.u)}" target="_blank" rel="noopener">Источник: ${esc(g.src.t)} ↗</a>`:`<div class="src nolink">Источник: ${esc(g.src.t)}</div>`):""}
-${g.warn?`<div class="warn${g.warnHot?" hot":""}">${linkify(g.warn)}</div>`:""}
+${g.warn?`<div class="warn${g.warnHot?" hot":""}${g.warnBig?" big":""}">${linkify(g.warn)}</div>`:""}
 ${g.docs?g.docs.map(d=>`<a class="src${d.alt?" alt":""}" href="${esc(d.u)}" target="_blank" rel="noopener">${esc(d.t)} ↗</a>`).join(""):""}
 ${g.video?`<video class="gvid" controls playsinline preload="metadata"${g.poster?` poster="${esc(g.poster)}"`:""} src="${esc(g.video)}"></video>`:""}
 ${(g.imgs||(g.img?[g.img]:[])).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener"><img class="gimg" src="${esc(u)}" alt="${esc(g.name)}" loading="lazy"></a>`).join("")}
